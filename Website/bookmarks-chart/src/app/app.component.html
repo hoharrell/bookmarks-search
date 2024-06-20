@@ -1,0 +1,100 @@
+  <div class="intro">
+    <h3>BookMarks Database Searcher</h3>
+    <p>BookMarks is a critical aggregate website launched by LitHub in 2016, analogous to Rotten Tomatoes or Metacritic for books. Reviews from book critics across the web are given 
+      a score ranging from 1 to 4 &lpar;1 for Pan, 2 for Mixed, 3 for Positive, and 4 for Rave&rpar; and compiled into one aggregate score. 
+      However, the website is not easily searchable by average score for different genres or years. The tool below uses a database scraped from BookMarks to
+      provide a searchable archive of aggregate scores for the purpose of research or curiosity.
+    </p>
+  </div>
+  <div class="chart-builder">
+  <div class="order-selector">
+    <div mdbDropdown class="dropdown">
+      <button
+        class="btn btn-primary dropdown-toggle"
+        type="button"
+        id="dropdownMenu2"
+        mdbDropdownToggle
+        aria-expanded="false"
+      >
+        {{ selector }}
+      </button>
+      <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><button class="dropdown-item" type="button" id="Best-Rated" (click)="toggleChartSelect($event)">Best-Rated</button></li>
+        <li><button class="dropdown-item" type="button" id="Most Popular" (click)="toggleChartSelect($event)">Most Popular</button></li>
+        <li>
+          <button class="dropdown-item" type="button" id="Worst-Rated" (click)="toggleChartSelect($event)">Worst-Rated</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="genre-selector">
+    <div mdbDropdown class="dropdown">
+      <button
+        class="btn btn-primary dropdown-toggle"
+        type="button"
+        id="dropdownMenu2"
+        mdbDropdownToggle
+        aria-expanded="false"
+      >
+        {{ genre }}
+      </button>
+      <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenu2">
+        <li><button *ngFor="let genre of genreList" class="dropdown-item" type="button" id="{{ genre }}" (click)="toggleGenreSelect($event)">{{ genre }}</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="book-label">
+    <span>Books From</span>
+  </div>
+  <div class="start-date-selector"> 
+    <mat-form-field>
+      <mat-label>Start Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="startPicker"
+        (dateChange)="toggleDate('start', $event)"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="book-label">
+    <span>To</span>
+  </div>
+  <div class="end-date-selector"> 
+    <mat-form-field>
+      <mat-label>End Date</mat-label>
+      <input id="end"
+        matInput
+        [matDatepicker]="endPicker"
+        (dateChange)="toggleDate('end', $event)"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>
+<hr>
+  <div class="labels">
+    <span>Average</span>
+    <span>Reviews</span>
+    <span>Publisher</span>
+  </div>
+<hr>
+      <div class="book-container" *ngFor="let book of books">
+      <img src="{{ book.cover }}" width="20%">
+      <div class="book-data">
+        <div class="title_author">
+          <span class="title">{{ book.title }}</span>
+          <strong class="author">{{ book.author }}</strong>
+        </div>
+        <div class="stats">
+          <span>{{ book.aggregate_rating }}</span>
+          <span>{{ book.total_scores }}</span>
+          <span>{{ book.publisher }}</span>
+      </div>
+      </div>
+    </div>
+<router-outlet></router-outlet>

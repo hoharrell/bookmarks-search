@@ -1,0 +1,95 @@
+div.intro {
+    margin: 3rem;
+    padding: .5rem;
+    h3 {
+        font-size: 2.5em;
+        font-weight: 700;
+    }
+    p {
+        font-size: 1.5em;
+        line-height: 1.2;
+    }
+}
+div.chart-builder {
+    display: flex;
+    flex-direction: row;
+    margin: 3rem;
+    padding: .5rem;
+    * {
+        margin: auto .25em;
+    }
+    div.book-label {
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+}
+hr {
+    border-color: #f26165;
+}
+
+div.labels {
+    display: flex;
+    padding: .5rem;
+    align-items:right;
+    margin-left: auto; 
+    margin-right: 12em;
+    width: 30%;
+
+    span {
+        width:3.85em;
+        text-align:center;
+        margin-left:1.3em;
+        font-weight: bold;
+        font-size: 2em;
+    }
+}
+
+div.book-container {
+    display: flex;
+    margin: 3rem;
+    padding: .5rem;
+}
+div.book-data {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: flex-start;
+    margin-bottom: .15em;
+    margin: 0em 1em;
+    padding: 0em .5em;
+
+    div.stats {
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        margin-left:1em;
+        
+        span {
+            width:3.85em;
+            text-align:center;
+            margin-left:1.3em;
+            font-weight: bold;
+            font-size: 2em;
+            line-height: 1.2em;
+        }
+    }
+}
+
+div.title_author {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    span.title {
+        font-size: 2.4em;
+        line-height: 1.5em;
+    }
+    strong.author {
+        font-size: 2.2em;
+        margin-top: .125em;
+        line-height: 1.5em;
+    }
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
